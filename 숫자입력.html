@@ -1,0 +1,46 @@
+<script>
+  //홀수 짝수 구분하기
+  let a = Number(prompt(`숫자를 입력하세요`));
+
+  if (a % 2 == 0) {
+    alert(`입력한 숫자는 짝수입니다`);
+  } else {
+    alert(`입력한 숫자는 홀수입니다`);
+  }
+
+  //태어난 연도 구분하기
+  const year = Number(prompt("태어난 연도를 입력하세요", ""));
+
+  switch (year % 12) {
+    case 0:
+      alert(`${year}년도에 태어났다면 원숭이띠 입니다.`);
+      break;
+    case 1:
+      alert(`${year}년도에 태어났다면 닭띠 입니다.`);
+      break;
+    case 2:
+      alert(`${year}년도에 태어났다면 개띠 입니다.`);
+      break;
+    case 3:
+      alert(`${year}년도에 태어났다면 돼지띠 입니다.`);
+      break;
+    case 4:
+      alert(`${year}년도에 태어났다면 쥐띠 입니다.`);
+      break;
+    case 5:
+      alert(`${year}년도에 태어났다면 소띠 입니다.`);
+      break;
+    case 6:
+      alert(`${year}년도에 태어났다면 호랑이띠 입니다.`);
+      break;
+    case 7:
+      alert(`${year}년도에 태어났다면 토끼띠 입니다.`);
+      break;
+    case 8:
+      alert(`${year}년도에 태어났다면 용띠 입니다.`);
+      break;
+    case 9:
+      alert(`말띠 입니다.`);
+      break;
+  }
+</script>
