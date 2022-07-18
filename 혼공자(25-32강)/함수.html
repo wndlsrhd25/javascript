@@ -1,0 +1,175 @@
+<script>
+  //익명함수 - 더 많이 사용됨
+  let f = function (매개변수, 매개변수) {
+    return 리턴값;
+  };
+
+  //선언적 함수
+  function p(매개변수, 매개변수) {
+    return 리턴값;
+  }
+
+  //코드의 재사용
+  let sum = function (limit) {
+    let output = 0;
+    for (let i = 1; i <= limit; i++) {
+      output += 1;
+    }
+    return output;
+  };
+
+  console.log(`합은 ${sum(10)}입니다`);
+  console.log(`합은 ${sum(20)}입니다`);
+
+  //윤년 구하기
+  let isLeapYear = function (연도) {
+    return (연도 % 4 === 0 && 연도 % 100 !== 0) || 연도 % 400 === 0;
+  };
+  console.log(`2020년은 윤년일까 ? === ${isLeapYear(2020)}`);
+  console.log(`2010년은 윤년일까 ? === ${isLeapYear(2010)}`);
+  console.log(`2000년은 윤년일까 ? === ${isLeapYear(2000)}`);
+
+  let isLeapYear2 = function (연도 = new Date().getFullYear()) {
+    console.log(`구하고 있는 연도: ${연도}`);
+    return (연도 % 4 === 0 && 연도 % 100 !== 0) || 연도 % 400 === 0;
+  };
+  console.log(isLeapYear2());
+
+  //최소값 구하기
+  let min = function (배열) {
+    let output = 배열[0];
+    for (let value of 배열) {
+      if (output > value) {
+        output = value;
+      }
+    }
+    return output;
+  };
+
+  console.log(min([52, 57, 109, 30, 68, 100, 70]));
+
+  //최대값 구하기
+  let max = function (array) {
+    let output = array[0];
+    for (let value of array) {
+      if (output < value) {
+        output = value;
+      }
+    }
+    return output;
+  };
+  console.log(max([52, 57, 109, 30, 68, 100, 70]));
+
+  //매개변수
+  let 함수 = function (a, b, ...매개변수) {
+    console.log(a, b, 매개변수);
+  };
+  함수();
+  함수(1);
+  함수(1, 2);
+  함수(1, 2, 3);
+  함수(1, 2, 3, 4);
+
+  let multiplyAll = function (start, end) {
+    let output = 1;
+    for (let i = start; i <= end; i++) {
+      output *= i;
+    }
+    return output;
+  };
+  console.log(multiplyAll(1, 2));
+  console.log(multiplyAll(1, 3));
+
+  //최대값 (배열일 경우)
+  let Max = function (첫번째요소, ...나머지) {
+    if (Array.isArray(첫번째요소)) {
+      let output = 첫번째요소[0];
+      for (let 값 of 첫번째요소) {
+        if (output < 값) {
+          output = 값;
+        }
+      }
+      return output;
+    } else {
+      let output = 첫번째요소;
+      for (let 값 of 나머지) {
+        if (output < 값) {
+          output = 값;
+        }
+      }
+      return output;
+    }
+  };
+
+  console.log(Max([1, 2, 3, 4]));
+  console.log(Max(1, 2, 3, 4));
+
+  //콜백 함수 매개변수로 숫자 하나를 받는 형태
+  let test = function (callback) {
+    callback(10);
+  };
+  let func = function (콜백함수_매개변수) {
+    console.log(`${콜백함수_매개변수}번째 안녕하세요`);
+  };
+  test(func);
+
+  //foreach 함수
+  let 배열 = [273, 52, 103, 32, 57];
+  배열.forEach(function (value, index) {
+    console.log(`${index}번째의 값은 ${value}`);
+  });
+
+  //filter 함수
+  배열 = 배열.filter(function (value, index) {
+    return value % 2 === 0;
+  });
+  console.log(배열);
+
+  /* --> 화살표 함수
+  배열 = 배열.filter((value,index) => value %2 ===0)
+  cosole.lof(배열)
+  */
+
+  //map 함수
+  배열 = 배열.map(function (value, index) {
+    return value + "!!";
+  });
+  console.log(배열);
+
+  /* --> 화살표 함수
+  배열 = 배열.map((value,index) => value +'!!')
+  cosole.lof(배열)
+  */
+
+  //타이머함수
+  let a = setTimeout(function () {
+    console.log(`setTimeout함수입니다!`);
+  }, 1000);
+
+  let b = setInterval(function () {
+    console.log(`setInterval 함수 입니다!`);
+  }, 1000);
+  console.log(a, b);
+  clearTimeout(a);
+  clearInterval(b);
+
+  //확인문제1
+  //홀수만 추출
+  let numbers = [273, 25, 75, 52, 103, 32, 57, 24, 76];
+  numbers = numbers.filter(function (value, index) {
+    return value % 2 === 1;
+  });
+  console.log(numbers);
+
+  //100이하만 추출
+  numbers = numbers.filter(function (value, index) {
+    return value <= 100;
+  });
+  console.log(numbers);
+
+  //5로 나눈 나머지가 0인 수만 추출
+  numbers = numbers.filter(function (value, index) {
+    return value % 5 === 0;
+  });
+  console.log(numbers);
+</script>
