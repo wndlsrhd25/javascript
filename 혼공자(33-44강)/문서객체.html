@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.createElement("h1");
+        header.textContent = "createElement로 만든 태그";
+        header.style.color = "red";
+
+        const body = document.querySelector("body");
+        body.appendChild(header); //생성
+        setTimeout(() => {
+          body.removeChild(header); //제거
+        }, 2000); //2초뒤에
+        //제거
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.createElement("h2");
+        header.textContent = "안녕하세요";
+        const first = document.querySelector(".first");
+        const second = document.querySelector(".second");
+        first.appendChild(header);
+
+        // 초마다 반복되게 만들기
+        const toFirst = () => {
+          first.appendChild(header);
+          setTimeout(toSecond, 1000);
+        };
+        const toSecond = () => {
+          second.appendChild(header);
+          setTimeout(toFirst, 1000);
+        };
+        toFirst();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="first">
+      <h1>첫번째 div 태그</h1>
+    </div>
+    <div class="second">
+      <h1>두번째 div 태그</h1>
+    </div>
+  </body>
+</html>

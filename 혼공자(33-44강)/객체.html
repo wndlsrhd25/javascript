@@ -1,0 +1,95 @@
+<script>
+  const array = [100, 20, "문자열", true, function () {}, () => {}];
+
+  //속성(property)
+  //메서드(method)
+
+  const dog = {
+    name: "구름",
+    age: 7,
+    bark: function () {
+      // 익명함수 : this 바인딩(this를 현재 객체와 연결하는 행위)을 한다.
+      console.log(`${dog.name}이/가 짖습니다!`);
+      console.log(`${this.name}이/가 짖습니다.`);
+    },
+    sleep: () => {
+      //화살표 함수 : this 바인딩을 안한다.
+      console.log(`${dog.name}이/가 잡니다.`);
+    },
+  };
+
+  dog.bark();
+  dog.sleep();
+
+  //객체의 키와 값을 정적으로 생성한다
+  const pet = {
+    name: "구름",
+    age: 8,
+  };
+  //객체의 키와 값을 동적으로 생성한다
+  pet.color = "brown";
+  //객체의 키와 값을 동적으로 제거한다
+  delete pet.color;
+  //출력
+  console.log(pet);
+
+  /*
+  # 기본 자료형 -> 스택에 값을 저장
+  - 숫자
+  -문자열
+  -불
+  ex) const a = '안녕하세요' 
+      a는 기본자료형 
+
+  # 객체 자료형 -> 스택과 힙을 연결 -> 속성과 메서드를 가질 수 있음
+  - 함수
+  - 배열
+  - 객체
+  - 등등
+
+  ex) a.bold()
+      a.으로 하면 일시적으로 객체 자료형으로 변환
+
+  */
+
+  String.prototype.value = 10;
+
+  const a = "문자열";
+  console.log(a.value); //a. value 값을 연결시킨것 10이 출력됨
+
+  String.prototype.contain = function (다른문자열) {
+    return this.indexOf(다른문자열) >= 0;
+  };
+  console.log(`a.contain('문자') : ${a.contain("문자")}`);
+
+  //객체 기본값을 지정하는 내용
+  const test = function (object) {
+    /*
+    //과거(1)
+    object.status = object.status !== undefined ? object.status : "이상 없음";
+    //과거(2)
+    object.status = object.status ? object.status : "이상 없음";
+    //과거(3)
+    object.status = object.status || "이상없음";
+
+    //현대(1) - 순서 중요함
+    object = { status: "이상없음", ...object };
+    //현대(2)
+    fun = function ({ name, age, color, status = "이상없음" }) {
+      return `${name} : ${age} : ${color} : ${status}`;
+    };
+    */
+
+    const { name, age, color, status } = { status: "이상없음", ...object };
+
+    return `${name} : ${age} : ${color} ${status}`;
+  };
+
+  console.log(
+    test({
+      name: "구름",
+      age: 7,
+      color: "갈색",
+    })
+  );
+</script>
